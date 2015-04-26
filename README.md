@@ -2,13 +2,13 @@
 
 Shelf middleware to proxy requests through a specified index page, useful for Single Page Applications that utilise the HTML5 History API.
 
-This is a Dart port of the Javascript [connect-history-api-fallback][https://github.com/bripkens/connect-history-api-fallback] middleware.
+This is a Dart port of the Javascript [connect-history-api-fallback](https://github.com/bripkens/connect-history-api-fallback) middleware.
 
 ## Introduction
 
 Single Page Applications (SPA) typically only utilise one index file that is
 accessible by web browsers: usually `index.html`. Navigation in the application
-is then commonly handled using JavaScript with the help of the
+is then commonly handled using client-side script with the help of the
 [HTML5 History API](http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-history-interface).
 This results in issues when the user hits the refresh button or is directly
 accessing a page other than the landing page, e.g. `/help` or `/help/online`
@@ -81,4 +81,4 @@ history(rewrites: [
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: http://example.com/issues/replaceme
+[tracker]: https://github.com/jonaskello/shelf_history_api_fallback/issues
