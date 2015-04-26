@@ -3,7 +3,7 @@ description: >
   Fallback to index.html for applications that are using the HTML 5 history API.
 version: 0.0.1
 author: Jonas kello <jonas.kello@gmail.com>
-homepage: https://www.example.com
+homepage: https://github.com/jonaskello/shelf_history_api_fallback
 dependencies:
   shelf: ">=0.6.1+1 <0.7.0"
 dev_dependencies:
