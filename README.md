@@ -72,7 +72,7 @@ Override the index when the request url matches a regex pattern. You can either 
 
 The following will rewrite a request that matches the `\/soccer` pattern to `/soccer.html`.
 ```dart
-historyApiFallback(rewrites: [new Rewrite(from: "\/soccer", to: (parsedUrl, match) => '/soccer.html')]);
+historyApiFallback(rewrites: [new Rewrite("\/soccer", (parsedUrl, match) => '/soccer.html')]);
 ```
 
 Alternatively functions can be used to have more control over the rewrite process.
