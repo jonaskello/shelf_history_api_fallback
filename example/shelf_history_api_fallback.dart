@@ -6,7 +6,6 @@ library shelf_history_api_fallback.example;
 import 'dart:io';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart' as io;
-
 import 'package:shelf_history_api_fallback/shelf_history_api_fallback.dart';
 
 /// Start the server, it will serve at port 1234.
