@@ -24,7 +24,7 @@ whenever there is a request which fulfils the following criteria:
  2. which accepts `text/html`,
  3. is not a direct file request, i.e. the requested path does not contain a
     `.` (DOT) character and
- 4. does not match a pattern provided in options.rewrites (see options below)
+ 4. does not match a pattern provided in rewrites (see options below)
 
 ## Usage
 
@@ -70,12 +70,9 @@ historyApiFallback(index: 'default.html');
 ### rewrites
 Override the index when the request url matches a regex pattern. You can either rewrite to a static string or use a function to transform the incoming request.
 
-The following will rewrite a request that matches the `/\/soccer/` pattern to `/soccer.html`.
+The following will rewrite a request that matches the `\/soccer` pattern to `/soccer.html`.
 ```dart
-history(rewrites: [
-    new Rewrite(from: /\/soccer/, to: (a, b) => '/soccer.html')
-  ]
-);
+historyApiFallback(rewrites: [new Rewrite(from: "\/soccer", to: (a, b) => '/soccer.html')]);
 ```
 
 Alternatively functions can be used to have more control over the rewrite process.
@@ -83,15 +80,10 @@ For instance, the following listing shows how requests to `/libs/jquery/jquery.1
 can be routed to `./bower_components/libs/jquery/jquery.1.12.0.min.js`. You can also make use of this if you
 have an API version in the URL path.
 ```dart
-history(rewrites: [
-    new Rewrite(
-      from: /^\/libs\/.*$/,
-      to: (context) {
-        return '/bower_components' + context.parsedUrl.pathname;
-      )
-    }
-  ]
-);
+historyApiFallback(rewrites: [
+  new Rewrite(from: "^\/libs\/.*$",
+              to: (context) => '/bower_components' + context.parsedUrl.pathname;)
+]);
 ```
 
 ## Features and bugs
