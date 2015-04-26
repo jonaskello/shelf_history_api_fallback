@@ -72,7 +72,7 @@ Override the index when the request url matches a regex pattern. You can either 
 
 The following will rewrite a request that matches the `\/soccer` pattern to `/soccer.html`.
 ```dart
-historyApiFallback(rewrites: [new Rewrite(from: "\/soccer", to: (a, b) => '/soccer.html')]);
+historyApiFallback(rewrites: [new Rewrite(from: "\/soccer", to: (parsedUrl, match) => '/soccer.html')]);
 ```
 
 Alternatively functions can be used to have more control over the rewrite process.
@@ -81,8 +81,8 @@ can be routed to `./bower_components/libs/jquery/jquery.1.12.0.min.js`. You can 
 have an API version in the URL path.
 ```dart
 historyApiFallback(rewrites: [
-  new Rewrite(from: "^\/libs\/.*$",
-              to: (context) => '/bower_components' + context.parsedUrl.pathname;)
+new Rewrite("^\/libs\/.*\$",
+          (parsedUrl, match) => parsedUrl.replace(path: '/bower_components' + parsedUrl.path))
 ]);
 ```
 

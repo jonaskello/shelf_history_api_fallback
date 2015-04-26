@@ -10,16 +10,27 @@ import 'package:shelf_history_api_fallback/shelf_history_api_fallback.dart';
 main() {
   group('Request tests', () {
 
-    Middleware middleware;
+//    Middleware middleware;
     Handler innerHandler = (Request req) => new Response.ok("Got it!");
 
-    setUp(() {
-      middleware = historyApiFallback();
-    });
+//    setUp(() {
+//      middleware = historyApiFallback();
+//    });
 
     test('First Test', () {
+      var middleware = historyApiFallback();
       var handler = middleware(innerHandler);
       var resp = handler(new Request("POST", Uri.parse("http://localhost/index.html")));
+      expect(resp, isNotNull);
+    });
+
+    test('Rewrite Test', () {
+      var middleware = historyApiFallback(rewrites: [
+        new Rewrite("^\/libs\/.*\$",
+            (parsedUrl, match) => parsedUrl.replace(path: '/bower_components' + parsedUrl.path))
+      ]);
+      var handler = middleware(innerHandler);
+      var resp = handler(new Request("GET", Uri.parse("http://localhost/index.html")));
       expect(resp, isNotNull);
     });
 
